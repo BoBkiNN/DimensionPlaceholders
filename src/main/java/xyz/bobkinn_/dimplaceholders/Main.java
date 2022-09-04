@@ -7,13 +7,10 @@ import org.apache.commons.io.FileUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
-import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerChangedWorldEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+import xyz.bobkinn_.ReloadCmd;
 
-public class Main extends JavaPlugin implements Listener
+public class Main extends JavaPlugin
 {
 
     public static Main plugin;
@@ -22,34 +19,19 @@ public class Main extends JavaPlugin implements Listener
     @Override
     public void onEnable() {
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
-            /*
-             * We register the EventListener here, when PlaceholderAPI is installed.
-             * Since all events are in the main class (this class), we simply use "this"
-             */
-            Bukkit.getPluginManager().registerEvents(this, this);
             plugin = this;
             new DimPExpansion().register();
         } else {
-            /*
-             * We inform about the fact that PlaceholderAPI isn't installed and then
-             * disable this plugin to prevent issues.
-             */
             getLogger().warning("Could not find PlaceholderAPI! This plugin is required.");
             Bukkit.getPluginManager().disablePlugin(this);
         }
         reload();
-
-        // getConfig().options().copyDefaults(true);
+        getCommand("dimplcrl").setExecutor(new ReloadCmd());
     }
 
     @Override
     public void onDisable() {
 
-    }
-
-    @EventHandler(priority = EventPriority.LOW)
-    public void onDimChange(PlayerChangedWorldEvent e) {
-        
     }
 
     public static void reload(){

@@ -4,3 +4,9 @@ main: xyz.bobkinn_.dimplaceholders.Main
 author: BoBkiNN_
 # api-version: 1.19
 depend: [PlaceholderAPI]
+
+commands:
+   dimplcrl:
+      description: Reload plugin
+      usage: /dimplcrl
+      permission: dimplc.reload

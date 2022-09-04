@@ -1,6 +1,12 @@
 name: DimensionPlaceholders
-version: '0.1b07'
+version: '0.3b11'
 main: xyz.bobkinn_.dimplaceholders.Main
 author: BoBkiNN_
 # api-version: 1.19
 depend: [PlaceholderAPI]
+
+commands:
+   dimplcrl:
+      description: Reload plugin
+      usage: /dimplcrl
+      permission: dimplc.reload
