@@ -3,6 +3,7 @@ package xyz.bobkinn_.dimplaceholders;
 import org.bukkit.entity.Player;
 import org.bukkit.World;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
+import net.md_5.bungee.api.ChatColor;
 
 public class DimPExpansion extends PlaceholderExpansion {
 
@@ -22,11 +23,13 @@ public class DimPExpansion extends PlaceholderExpansion {
     }
 
     @Override
-    public String onPlaceholderRequest(Player player, String identifier){
+    public String onPlaceholderRequest(Player player, String params){
         World world = player.getWorld();
-        
-        if (identifier == "color"){
-            return world.getName()+" "+identifier;
+        String worldName = world.getKey().getKey();
+        Main.plugin.getLogger().info(player.toString()+worldName+" "+params);
+        if (params.equalsIgnoreCase("color")){
+            String color = Main.config.getString("colors."+worldName, "");
+            return ChatColor.translateAlternateColorCodes('&', color);
         }
         return null;
     }
