@@ -1,0 +1,6 @@
+name: DimensionPlaceholders
+version: '${project.version}'
+main: xyz.bobkinn_.dimplaceholders.Main
+author: BoBkiNN_
+# api-version: 1.19
+depend: [PlaceholderAPI]
