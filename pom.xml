@@ -6,7 +6,7 @@
 
   <groupId>xyz.bobkinn_</groupId>
   <artifactId>dimplaceholders</artifactId>
-  <version>0.1b06</version>
+  <version>0.1b07</version>
 
   <name>DimensionPlaceholders</name>
   <packaging>jar</packaging>

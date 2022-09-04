@@ -75,13 +75,14 @@ public class Main extends JavaPlugin implements Listener
                 Bukkit.getPluginManager().disablePlugin(plugin);
                 return;
             }
+            InputStream from = plugin.getResource("config.yml");
+            try {
+                FileUtils.copyToFile(from, configFile);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-        InputStream from = plugin.getResource("config.yml");
-        try {
-            FileUtils.copyToFile(from, configFile);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        
         Configuration config = YamlConfiguration.loadConfiguration(configFile);
         Main.config = config;
     }
