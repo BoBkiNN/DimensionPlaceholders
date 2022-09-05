@@ -1,13 +1,9 @@
 # DimensionPlaceholders
 
 #Placeholders
-* %dimplc_color% 
- if (params.equalsIgnoreCase("color")){
-            String color = Main.config.getString("colors."+worldName, "");
-            return ChatColor.translateAlternateColorCodes('&', color);
-        }
-        if (params.equalsIgnoreCase("folder")) return world.getName();
-        if (params.equalsIgnoreCase("namespacedkey")) return world.getKey().getNamespace()+":"+world.getKey().getKey();
-        if (params.equalsIgnoreCase("namespace")) return world.getKey().getNamespace();
-        if (params.equalsIgnoreCase("key")) return world.getKey().getKey();
-        if (params.equalsIgnoreCase("loadedchunks")) return String.valueOf(world.getLoadedChunks().length);
+* `%dimplc_color%` Color from config
+* `%dimplc_folder%` World name like 'world' or 'world_the_end'
+* `%dimplc_namespacedkey%` namespacedkey example - 'minecraft:overworld'
+* `%dimplc_namespace%` - 'minecraft' or other namespace from namespacedkey
+* `%dimplc_key%` - 'overworld'  or other key from namespacedkey
+* `%dimplc_loadedchunks%` - loaded chunks in world where player is
