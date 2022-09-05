@@ -1,6 +1,6 @@
 # DimensionPlaceholders
-
-#Placeholders
+Very simple PAPI Expansion
+# Placeholders
 * `%dimplc_color%` Color from config
 * `%dimplc_folder%` World name like 'world' or 'world_the_end'
 * `%dimplc_namespacedkey%` namespacedkey example - 'minecraft:overworld'
