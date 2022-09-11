@@ -63,8 +63,7 @@ public class Main extends JavaPlugin
                 e.printStackTrace();
             }
         }
-        
-        Configuration config = YamlConfiguration.loadConfiguration(configFile);
-        Main.config = config;
+
+        Main.config = YamlConfiguration.loadConfiguration(configFile);
     }
 }
