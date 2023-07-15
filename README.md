@@ -1,4 +1,6 @@
 # DimensionPlaceholders
+[![See on Modrinth - DimensionPlaceholders](https://img.shields.io/badge/See_on_Modrinth-DimensionPlaceholders-2ea44f?logo=modrinth)](https://modrinth.com/plugin/dimensionplaceholders)
+
 Very simple PAPI Expansion
 # Placeholders
 * `%dimplc_color%` Color from config
