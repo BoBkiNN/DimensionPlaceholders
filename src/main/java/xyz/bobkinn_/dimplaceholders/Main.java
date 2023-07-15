@@ -1,12 +1,7 @@
 package xyz.bobkinn_.dimplaceholders;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import org.apache.commons.io.FileUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.Configuration;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin
@@ -14,15 +9,18 @@ public class Main extends JavaPlugin
 
     public static Main plugin;
     public static Configuration config;
+    private DimPExpansion expansion;
 
     @Override
     public void onEnable() {
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             plugin = this;
-            new DimPExpansion().register();
+            expansion = new DimPExpansion();
+            expansion.register();
         } else {
             getLogger().warning("Could not find PlaceholderAPI! This plugin is required.");
             Bukkit.getPluginManager().disablePlugin(this);
+            return;
         }
         reload();
         getCommand("dimplcrl").setExecutor(new ReloadCmd());
@@ -30,40 +28,19 @@ public class Main extends JavaPlugin
 
     @Override
     public void onDisable() {
-
+        if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+            try {
+                expansion.unregister();
+            } catch (Exception ignored) {}
+        }
     }
 
     public static void reload(){
-        File dataFolder = plugin.getDataFolder();
-        if (!dataFolder.exists()) {
-            if (!dataFolder.mkdir()) {
-                plugin.getLogger().severe("Failed to create data folder!");
-                Bukkit.getPluginManager().disablePlugin(plugin);
-                return;
-            }
+        try {
+            plugin.reloadConfig();
+        } catch (Exception e){
+            plugin.getLogger().severe("Failed to reload config");
         }
-        File configFile = new File(dataFolder, "config.yml");
-        if (!configFile.exists()){
-            try {
-                if (!configFile.createNewFile()){
-                    plugin.getLogger().severe("Failed to create config file!");
-                    Bukkit.getPluginManager().disablePlugin(plugin);
-                    return;
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-                plugin.getLogger().severe("Failed to create config file!");
-                Bukkit.getPluginManager().disablePlugin(plugin);
-                return;
-            }
-            InputStream from = plugin.getResource("config.yml");
-            try {
-                FileUtils.copyToFile(from, configFile);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        Main.config = YamlConfiguration.loadConfiguration(configFile);
+        Main.config = plugin.getConfig();
     }
 }

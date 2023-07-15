@@ -4,22 +4,28 @@ import org.bukkit.entity.Player;
 import org.bukkit.World;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import net.md_5.bungee.api.ChatColor;
+import org.jetbrains.annotations.NotNull;
 
 public class DimPExpansion extends PlaceholderExpansion {
 
     @Override
-    public String getAuthor() {
+    public @NotNull String getAuthor() {
         return "BoBkiNN_";
     }
     
     @Override
-    public String getIdentifier() {
+    public @NotNull String getIdentifier() {
         return "dimplc";
     }
 
     @Override
-    public String getVersion() {
+    public @NotNull String getVersion() {
         return "1.0.0";
+    }
+
+    @Override
+    public boolean persist() {
+        return true;
     }
 
     @Override

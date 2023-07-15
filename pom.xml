@@ -6,7 +6,7 @@
 
   <groupId>xyz.bobkinn_</groupId>
   <artifactId>dimplaceholders</artifactId>
-  <version>0.3b12</version>
+  <version>0.3.13</version>
 
   <name>DimensionPlaceholders</name>
   <packaging>jar</packaging>
@@ -15,7 +15,6 @@
     <maven.compiler.source>8</maven.compiler.source>
     <maven.compiler.target>8</maven.compiler.target>
     <java.version>8</java.version>
-    <compiler.plugin.version>3.8.1</compiler.plugin.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
   </properties>
@@ -32,11 +31,6 @@
   </repositories>
 
   <dependencies>
-    <dependency>
-        <groupId>commons-io</groupId>
-        <artifactId>commons-io</artifactId>
-        <version>2.11.0</version>
-    </dependency>
     <dependency>
         <groupId>me.clip</groupId>
         <artifactId>placeholderapi</artifactId>
@@ -80,45 +74,11 @@
                         <goal>shade</goal>
                     </goals>
                     <configuration>
-                        <!-- <relocations>
-                            <relocation>
-                                <pattern>org.apache.commons.io</pattern>
-                                <shadedPattern>org.bukkit.craftbukkit.libs.org.apache.commons.io</shadedPattern>
-                            </relocation>
-                        </relocations> -->
                         <createDependencyReducedPom>false</createDependencyReducedPom>
                     </configuration>
                 </execution>
             </executions>
         </plugin>
-      <!-- <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-jar-plugin</artifactId>
-          <version>3.1.0</version>
-          <executions>
-              <execution>
-                  <phase>package</phase>
-                  <goals>
-                      <goal>jar</goal>
-                  </goals>
-              </execution>
-          </executions>
-          <configuration>
-              <descriptorRefs>
-                  <descriptorRef>jar-with-dependencies</descriptorRef>
-              </descriptorRefs>
-              <archive>
-                  <manifest>
-                      <addClasspath>true</addClasspath>
-                      <classpathPrefix>lib/</classpathPrefix>
-                      <mainClass>xyz.bobkinn_.test.App</mainClass>
-                  </manifest>
-                  <manifestEntries>
-                      <author>BoBkiNN_</author>
-                  </manifestEntries>
-              </archive>
-          </configuration>
-      </plugin> -->
     </plugins>
   </build>
 </project>
