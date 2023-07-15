@@ -37,6 +37,7 @@ public class Main extends JavaPlugin
 
     public static void reload(){
         try {
+            plugin.saveDefaultConfig();
             plugin.reloadConfig();
         } catch (Exception e){
             plugin.getLogger().severe("Failed to reload config");
